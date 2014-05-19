@@ -4,20 +4,20 @@ var slide = function(ct, newView, oldView, callback, direction, slow) {
     var ctEl = ct.$(),
         newEl = newView.$(),
         duration = slow ? 2050 : 450;
-    ctEl.addClass('ember-animated-container-slide-'+direction+'-ct')
+    ctEl.addClass('eac-slide-'+direction+'-ct')
     if (slow) {
-        ctEl.addClass('ember-animated-container-slide-slow-ct')
+        ctEl.addClass('eac-slide-slow-ct')
     }
-    newEl.addClass('ember-animated-container-slide-'+direction+'-new');
+    newEl.addClass('eac-slide-'+direction+'-new');
     setTimeout(function() {
-        ctEl.addClass('ember-animated-container-slide-'+direction+'-ct-sliding');
+        ctEl.addClass('eac-slide-'+direction+'-ct-sliding');
         setTimeout(function() {
-            ctEl.removeClass('ember-animated-container-slide-'+direction+'-ct');
+            ctEl.removeClass('eac-slide-'+direction+'-ct');
             if (slow) {
-                ctEl.removeClass('ember-animated-container-slide-slow-ct')
+                ctEl.removeClass('eac-slide-slow-ct')
             }
-            ctEl.removeClass('ember-animated-container-slide-'+direction+'-ct-sliding');
-            newEl.removeClass('ember-animated-container-slide-'+direction+'-new');
+            ctEl.removeClass('eac-slide-'+direction+'-ct-sliding');
+            newEl.removeClass('eac-slide-'+direction+'-new');
             callback();
         }, duration);
     }, 0);

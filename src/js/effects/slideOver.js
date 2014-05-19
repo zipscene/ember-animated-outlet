@@ -4,14 +4,14 @@ var slideOver = function(ct, newView, oldView, callback, direction) {
     var ctEl = ct.$(),
         newEl = newView.$(),
         duration = 450;
-    ctEl.addClass('ember-animated-container-slideOver-old');
-    newEl.addClass('ember-animated-container-slideOver-'+direction+'-new');
+    ctEl.addClass('eac-old');
+    newEl.addClass('eac-'+direction+'-new');
     setTimeout(function() {
-        newEl.addClass('ember-animated-container-slideOver-'+direction+'-new-sliding');
+        newEl.addClass('eac-'+direction+'-new-sliding');
         setTimeout(function() {
-            newEl.removeClass('ember-animated-container-slideOver-'+direction+'-new');
-            newEl.removeClass('ember-animated-container-slideOver-'+direction+'-new-sliding');
-            ctEl.removeClass('ember-animated-container-slideOver-old');
+            newEl.removeClass('eac-'+direction+'-new');
+            newEl.removeClass('eac-'+direction+'-new-sliding');
+            ctEl.removeClass('eac-old');
             callback();
         }, duration);
     }, 0);

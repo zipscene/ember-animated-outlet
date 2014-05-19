@@ -2,17 +2,17 @@ Ember.AnimatedContainerView.registerEffect('flip', function(ct, newView, oldView
     var ctEl = ct.$(),
         newEl = newView.$(),
         oldEl = oldView.$();
-    ctEl.wrap('<div class="ember-animated-container-flip-wrap"></div>')
-    ctEl.addClass('ember-animated-container-flip-ct');
-    newEl.addClass('ember-animated-container-flip-new');
-    oldEl.addClass('ember-animated-container-flip-old');
+    ctEl.wrap('<div class="eac-flip-wrap"></div>')
+    ctEl.addClass('eac-flip-ct');
+    newEl.addClass('eac-flip-new');
+    oldEl.addClass('eac-flip-old');
     setTimeout(function() {
-        ctEl.addClass('ember-animated-container-flip-ct-flipping');
+        ctEl.addClass('eac-flip-ct-flipping');
         setTimeout(function() {
             ctEl.unwrap();
-            ctEl.removeClass('ember-animated-container-flip-ct');
-            ctEl.removeClass('ember-animated-container-flip-ct-flipping');
-            newEl.removeClass('ember-animated-container-flip-new');
+            ctEl.removeClass('eac-flip-ct');
+            ctEl.removeClass('eac-flip-ct-flipping');
+            newEl.removeClass('eac-flip-new');
             callback();
         }, 650);
     }, 0);
