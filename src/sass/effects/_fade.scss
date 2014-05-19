@@ -1,6 +1,6 @@
 .ember-animated-container-fade-old {
     @include transition-property(opacity);
-    @include transition-duration(0.5s);
+    @include transition-duration(0.4s);
     z-index: 2;
     @include opacity(1);
 }
