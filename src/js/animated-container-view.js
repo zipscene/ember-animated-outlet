@@ -7,7 +7,7 @@
 */
 Ember.AnimatedContainerView = Ember.ContainerView.extend({
 
-    classNames: ['ember-animated-container'],
+    classNames: ['eac'],
     
     init: function() {
         this._super();

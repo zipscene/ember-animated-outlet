@@ -1,5 +1,7 @@
 @import "compass";
 
+$bar-base-height: 44px;
+
 .ember-animated-container {
     position: absolute;
     height: 100%;
@@ -20,3 +22,4 @@
 @import "effects/flip";
 @import "effects/slide";
 @import "effects/slideOver";
+@import "scroll";

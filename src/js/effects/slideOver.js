@@ -8,9 +8,11 @@ var slideOver = function(ct, newView, oldView, callback, direction) {
     newEl.addClass('eac-'+direction+'-new');
     setTimeout(function() {
         newEl.addClass('eac-'+direction+'-new-sliding');
+        newEl.addClass('eac-sliding');
         setTimeout(function() {
             newEl.removeClass('eac-'+direction+'-new');
             newEl.removeClass('eac-'+direction+'-new-sliding');
+            newEl.removeClass('eac-sliding');
             ctEl.removeClass('eac-old');
             callback();
         }, duration);

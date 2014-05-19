@@ -11,12 +11,14 @@ var slide = function(ct, newView, oldView, callback, direction, slow) {
     newEl.addClass('eac-slide-'+direction+'-new');
     setTimeout(function() {
         ctEl.addClass('eac-slide-'+direction+'-ct-sliding');
+        ctEl.addClass('eac-ct-sliding');
         setTimeout(function() {
             ctEl.removeClass('eac-slide-'+direction+'-ct');
             if (slow) {
                 ctEl.removeClass('eac-slide-slow-ct')
             }
             ctEl.removeClass('eac-slide-'+direction+'-ct-sliding');
+            ctEl.removeClass('eac-ct-sliding');
             newEl.removeClass('eac-slide-'+direction+'-new');
             callback();
         }, duration);
