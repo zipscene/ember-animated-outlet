@@ -7,7 +7,7 @@
 */
 Ember.AnimatedContainerView = Ember.ContainerView.extend({
 
-    classNames: ['ember-animated-container'],
+    classNames: ['eac'],
     
     init: function() {
         this._super();
@@ -84,7 +84,7 @@ Ember.AnimatedContainerView = Ember.ContainerView.extend({
             if (oldView && effect) {
                 //If an effect is queued, then start the effect when the new view has been inserted in the DOM
                 this._isAnimating = true;
-                newView.on('didInsertElement', function() {
+                newView.one('didInsertElement', function() {
                     Ember.AnimatedContainerView._effects[effect](self, newView, oldView, function() {
                         Em.run(function() {
                             self.removeObject(oldView);
@@ -416,12 +416,12 @@ Ember.ControllerMixin.reopen({
 Ember.AnimatedContainerView.registerEffect('fade', function(ct, newView, oldView, callback) {
     var newEl = newView.$(),
         oldEl = oldView.$();
-    newEl.addClass('ember-animated-container-fade-new');
-    oldEl.addClass('ember-animated-container-fade-old');
+    newEl.addClass('eac-fade-new');
+    oldEl.addClass('eac-fade-old');
     setTimeout(function() {
-        oldEl.addClass('ember-animated-container-fade-old-fading');
+        oldEl.addClass('eac-fade-old-fading');
         setTimeout(function() {
-            newEl.removeClass('ember-animated-container-fade-new');
+            newEl.removeClass('eac-fade-new');
             callback();
         }, 550);
     }, 0);
@@ -430,44 +430,44 @@ Ember.AnimatedContainerView.registerEffect('flip', function(ct, newView, oldView
     var ctEl = ct.$(),
         newEl = newView.$(),
         oldEl = oldView.$();
-    ctEl.wrap('<div class="ember-animated-container-flip-wrap"></div>')
-    ctEl.addClass('ember-animated-container-flip-ct');
-    newEl.addClass('ember-animated-container-flip-new');
-    oldEl.addClass('ember-animated-container-flip-old');
+    ctEl.wrap('<div class="eac-flip-wrap"></div>')
+    ctEl.addClass('eac-flip-ct');
+    newEl.addClass('eac-flip-new');
+    oldEl.addClass('eac-flip-old');
     setTimeout(function() {
-        ctEl.addClass('ember-animated-container-flip-ct-flipping');
+        ctEl.addClass('eac-flip-ct-flipping');
         setTimeout(function() {
             ctEl.unwrap();
-            ctEl.removeClass('ember-animated-container-flip-ct');
-            ctEl.removeClass('ember-animated-container-flip-ct-flipping');
-            newEl.removeClass('ember-animated-container-flip-new');
+            ctEl.removeClass('eac-flip-ct');
+            ctEl.removeClass('eac-flip-ct-flipping');
+            newEl.removeClass('eac-flip-new');
             callback();
         }, 650);
     }, 0);
 });
 (function() {
-    
+
 var slide = function(ct, newView, oldView, callback, direction, slow) {
     var ctEl = ct.$(),
         newEl = newView.$(),
         duration = slow ? 2050 : 450;
-    ctEl.addClass('ember-animated-container-slide-'+direction+'-ct')
+    ctEl.addClass('eac-slide-'+direction+'-ct')
     if (slow) {
-        ctEl.addClass('ember-animated-container-slide-slow-ct')
+        ctEl.addClass('eac-slide-slow-ct')
     }
-    newEl.addClass('ember-animated-container-slide-'+direction+'-new');
+    newEl.addClass('eac-slide-'+direction+'-new');
     setTimeout(function() {
-        ctEl.addClass('ember-animated-container-slide-'+direction+'-ct-sliding');
+        ctEl.addClass('eac-slide-'+direction+'-ct-sliding');
+        ctEl.addClass('eac-ct-sliding');
         setTimeout(function() {
-            ctEl.removeClass('ember-animated-container-slide-'+direction+'-ct');
+            ctEl.removeClass('eac-slide-'+direction+'-ct');
             if (slow) {
-                ctEl.removeClass('ember-animated-container-slide-slow-ct')
+                ctEl.removeClass('eac-slide-slow-ct')
             }
-            ctEl.removeClass('ember-animated-container-slide-'+direction+'-ct-sliding');
-            newEl.removeClass('ember-animated-container-slide-'+direction+'-new');
-            setTimeout(function() {
-                callback();
-            }, 0);
+            ctEl.removeClass('eac-slide-'+direction+'-ct-sliding');
+            ctEl.removeClass('eac-ct-sliding');
+            newEl.removeClass('eac-slide-'+direction+'-new');
+            callback();
         }, duration);
     }, 0);
 };
@@ -491,7 +491,7 @@ Ember.AnimatedContainerView.registerEffect('slideDown', function(ct, newView, ol
 Ember.AnimatedContainerView.registerEffect('slowSlideLeft', function(ct, newView, oldView, callback) {
     slide(ct, newView, oldView, callback, 'left', true);
 });
-    
+
 Ember.AnimatedContainerView.registerEffect('slowSlideRight', function(ct, newView, oldView, callback) {
     slide(ct, newView, oldView, callback, 'right', true);
 });
@@ -505,20 +505,23 @@ Ember.AnimatedContainerView.registerEffect('slowSlideDown', function(ct, newView
 });
 
 })();
+
 (function() {
 
 var slideOver = function(ct, newView, oldView, callback, direction) {
     var ctEl = ct.$(),
         newEl = newView.$(),
         duration = 450;
-    ctEl.addClass('ember-animated-container-slideOver-old');
-    newEl.addClass('ember-animated-container-slideOver-'+direction+'-new');
+    ctEl.addClass('eac-old');
+    newEl.addClass('eac-'+direction+'-new');
     setTimeout(function() {
-        newEl.addClass('ember-animated-container-slideOver-'+direction+'-new-sliding');
+        newEl.addClass('eac-'+direction+'-new-sliding');
+        newEl.addClass('eac-sliding');
         setTimeout(function() {
-            newEl.removeClass('ember-animated-container-slideOver-'+direction+'-new');
-            newEl.removeClass('ember-animated-container-slideOver-'+direction+'-new-sliding');
-            ctEl.removeClass('ember-animated-container-slideOver-old');
+            newEl.removeClass('eac-'+direction+'-new');
+            newEl.removeClass('eac-'+direction+'-new-sliding');
+            newEl.removeClass('eac-sliding');
+            ctEl.removeClass('eac-old');
             callback();
         }, duration);
     }, 0);
