@@ -450,7 +450,7 @@ Ember.AnimatedContainerView.registerEffect('flip', function(ct, newView, oldView
 var slide = function(ct, newView, oldView, callback, direction, slow) {
     var ctEl = ct.$(),
         newEl = newView.$(),
-        duration = slow ? 2050 : 450;
+        duration = slow ? 1050 : 250;
     ctEl.addClass('eac-slide-'+direction+'-ct')
     if (slow) {
         ctEl.addClass('eac-slide-slow-ct')
@@ -511,7 +511,7 @@ Ember.AnimatedContainerView.registerEffect('slowSlideDown', function(ct, newView
 var slideOver = function(ct, newView, oldView, callback, direction) {
     var ctEl = ct.$(),
         newEl = newView.$(),
-        duration = 450;
+        duration = 250;
     ctEl.addClass('eac-old');
     newEl.addClass('eac-'+direction+'-new');
     setTimeout(function() {
