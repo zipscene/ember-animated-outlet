@@ -3,7 +3,7 @@
 var slide = function(ct, newView, oldView, callback, direction, slow) {
     var ctEl = ct.$(),
         newEl = newView.$(),
-        duration = slow ? 2050 : 450;
+        duration = slow ? 1050 : 250;
     ctEl.addClass('eac-slide-'+direction+'-ct')
     if (slow) {
         ctEl.addClass('eac-slide-slow-ct')
