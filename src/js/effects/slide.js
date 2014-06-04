@@ -3,16 +3,18 @@
 var slide = function(ct, newView, oldView, callback, direction, slow) {
     var ctEl = ct.$(),
         newEl = newView.$(),
-        duration = slow ? 1050 : 250;
+        duration = slow ? 1050 : 450;
     ctEl.addClass('eac-slide-'+direction+'-ct')
     if (slow) {
         ctEl.addClass('eac-slide-slow-ct')
     }
     newEl.addClass('eac-slide-'+direction+'-new');
+    newEl.addClass('eac-slide-new').css({'top': $('.content').scrollTop()});
     setTimeout(function() {
         ctEl.addClass('eac-slide-'+direction+'-ct-sliding');
         ctEl.addClass('eac-ct-sliding');
         setTimeout(function() {
+           $('.content').scrollTop(0,0); // scroll to top
             ctEl.removeClass('eac-slide-'+direction+'-ct');
             if (slow) {
                 ctEl.removeClass('eac-slide-slow-ct')
@@ -20,6 +22,8 @@ var slide = function(ct, newView, oldView, callback, direction, slow) {
             ctEl.removeClass('eac-slide-'+direction+'-ct-sliding');
             ctEl.removeClass('eac-ct-sliding');
             newEl.removeClass('eac-slide-'+direction+'-new');
+            newEl.removeClass('eac-slide-new');
+            newEl.removeAttr('style'); // remove scrollY height
             callback();
         }, duration);
     }, 0);

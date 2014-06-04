@@ -3,7 +3,7 @@
 .eac-slide-up-ct,
 .eac-slide-down-ct {
     @include transition-property(transform);
-    @include transition-duration(0.2s);
+    @include transition-duration(0.4s);
     @include transition-timing-function(ease-out);
     
     &.eac-slide-slow-ct {

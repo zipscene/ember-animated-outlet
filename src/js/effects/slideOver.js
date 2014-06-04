@@ -3,9 +3,10 @@
 var slideOver = function(ct, newView, oldView, callback, direction) {
     var ctEl = ct.$(),
         newEl = newView.$(),
-        duration = 250;
+        duration = 450;
     ctEl.addClass('eac-old');
     newEl.addClass('eac-'+direction+'-new');
+    newEl.addClass('eac-new');
     setTimeout(function() {
         newEl.addClass('eac-'+direction+'-new-sliding');
         newEl.addClass('eac-sliding');

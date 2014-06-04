@@ -6,7 +6,7 @@
 .eac-up-new,
 .eac-down-new {
     @include transition-property(transform);
-    @include transition-duration(0.2s);
+    @include transition-duration(0.4s);
     @include transition-timing-function(ease-out);
     @include transform(translateX(0%));
     z-index: 2;
