@@ -3,16 +3,20 @@
 var slide = function(ct, newView, oldView, callback, direction, slow) {
     var ctEl = ct.$(),
         newEl = newView.$(),
-        duration = slow ? 1050 : 450;
-    ctEl.addClass('eac-slide-'+direction+'-ct')
+        duration = slow ? 1050 : 350;
+
+    ctEl.addClass('eac-ct-sliding');
+    ctEl.addClass('eac-slide-'+direction+'-ct');
+
     if (slow) {
         ctEl.addClass('eac-slide-slow-ct')
     }
-    newEl.addClass('eac-slide-'+direction+'-new');
+    
     newEl.addClass('eac-slide-new').css({'top': $('body').scrollTop()});
+    newEl.addClass('eac-slide-'+direction+'-new');
     setTimeout(function() {
         ctEl.addClass('eac-slide-'+direction+'-ct-sliding');
-        ctEl.addClass('eac-ct-sliding');
+        
         setTimeout(function() {
            $('body').scrollTop(0,0); // scroll to top
             ctEl.removeClass('eac-slide-'+direction+'-ct');
