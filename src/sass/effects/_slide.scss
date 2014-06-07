@@ -3,7 +3,7 @@
 .eac-slide-up-ct,
 .eac-slide-down-ct {
     @include transition-property(transform);
-    @include transition-duration(0.4s);
+    @include transition-duration(0.3s);
     @include transition-timing-function(ease-out);
     
     &.eac-slide-slow-ct {
@@ -27,6 +27,10 @@
     @include transform(translate3d(0, 100%, 0));
 }
 
+.eac-slide-left-new,.eac-slide-right-new, .eac-slide-up-new, .eac-slide-down-new {
+    position: absolute;
+    width: 100%;
+}
 .eac-slide-left-new {
     left: 100% !important;
 }
